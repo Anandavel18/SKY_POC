@@ -75,7 +75,7 @@ query, bind_params = j.prepare_query(sql_query, params)
 sql_final = get_sql_from_template(query, bind_params)
 
 cursor.execute(sql_final)
-for output_qa_test in cursor:
+for output_qa_test in list(cursor):
     exp_query_match = int(output_qa_test[0])
     if exp_query_match == exp_result_match:
         # Audit table entry based on test case success and failure
